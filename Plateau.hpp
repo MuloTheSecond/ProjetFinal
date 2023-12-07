@@ -1,21 +1,21 @@
-﻿#ifndef PLATEAU_HPP  // Garde d'en-tête
+﻿#ifndef PLATEAU_HPP
 #define PLATEAU_HPP
 
 #include <vector>
 #include "Case.hpp"
+#include <memory>
 
-class Plateau 
+class Plateau
 {
 public:
-	Plateau();
-	~Plateau();
-	shared_ptr<Case> rechercherCaseParNom(std::string nom);
+    Plateau();
+    ~Plateau();
+    std::shared_ptr<Case> rechercherCaseParNom(std::string nom);
 
-
-	void ajouterCase(shared_ptr<Case> nouvelleCase);
+    void ajouterCase(std::string nom, std::string description);
 
 private:
-	vector<shared_ptr<Case>> cases_;
+    std::vector<std::shared_ptr<Case>> cases_;
 };
 
 Plateau::Plateau()
@@ -24,19 +24,25 @@ Plateau::Plateau()
 
 Plateau::~Plateau()
 {
-
 }
 
-void Plateau::ajouterCase(shared_ptr<Case> nouvelleCase) {
-	cases_.push_back(nouvelleCase);
+void Plateau::ajouterCase(std::string nom, std::string description)
+{
+    auto newCase = std::make_shared<Case>(nom, description);
+
+    cases_.push_back(newCase);
 }
 
-shared_ptr<Case> Plateau::rechercherCaseParNom(std::string nom) {
-	for (auto ptrCase : cases_) {
-		if (ptrCase->getNom() == nom) {
-			return ptrCase;
-		}
-	}
+std::shared_ptr<Case> Plateau::rechercherCaseParNom(std::string nom)
+{
+    for (const auto& ptrCase : cases_)
+    {
+        if (ptrCase->nom_ == nom)
+        {
+            return ptrCase;
+        }
+    }
+    return nullptr; 
 }
 
 #endif

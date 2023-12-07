@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
 	initialiserBibliothequeCours(argc, argv);
 
 	cout << "--- INF1015 -- Bienvenue au prestigieux restaurant de Ratatouille !\n"
-		<< "\033[35m Installez-vous confortablement et n'hésitez pas à faire un tour dans notre beau batîment!\033[0m\n";
+		<< "\033[35m Installez-vous confortablement et n'hésitez pas à faire un tour dans notre beau batîment aux nombreuses pièces, parfois inconnues..\033[0m\n";
 
 	// Exemple d'affichage de débogage
 	cdbg << "Bonjour débogueur!\n";
