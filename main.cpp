@@ -15,6 +15,12 @@
 #include <cppitertools/enumerate.hpp>
 #include <string>
 
+#include "Logique.hpp"
+#include "Case.hpp"
+#include "Plateau.hpp"
+
+
+
 //#if __has_include("gtest/gtest.h")
 //#include "gtest/gtest.h"
 //#endif
@@ -37,7 +43,7 @@ void initialiserBibliothequeCours([[maybe_unused]] int argc, [[maybe_unused]] ch
 	#ifdef BIBLIOTHEQUE_COURS_INCLUS
 	bibliotheque_cours::activerCouleursAnsi();  // Permet sous Windows les "ANSI escape code" pour changer de couleurs https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac les supportent normalement par défaut.
 
-	// cdbg.setTee(&clog);  // Décommenter cette ligne pour que cdbg affiche sur la console en plus de la "Sortie" du débogueur.
+	cdbg.setTee(&clog);  // Décommenter cette ligne pour que cdbg affiche sur la console en plus de la "Sortie" du débogueur.
 	
 	// bibliotheque_cours::executerGoogleTest(argc, argv); // Attention de ne rien afficher avant cette ligne, sinon l'Explorateur de tests va tenter de lire votre affichage comme un résultat de test.
 	#endif
@@ -56,9 +62,14 @@ int main(int argc, char* argv[])
 {
 	initialiserBibliothequeCours(argc, argv);
 
-	// Exemple d'affichage: (si la bibliothèque est bien chargée, l'accent devrait sortir correctement et la couleur aussi)
-	cout << "Bonjour à tous!\n"
-		<< "\033[35mEn couleur!\033[0m\n";
-	// Exemple d'affichage de débogage, devrait être dans la fenêtre "Sortie" de Visual Studio:
+	cout << "--- INF1015 -- Bienvenue au prestigieux restaurant de Ratatouille !\n"
+		<< "\033[35m Installez-vous confortablement et n'hésitez pas à faire un tour dans notre beau batîment!\033[0m\n";
+
+	// Exemple d'affichage de débogage
 	cdbg << "Bonjour débogueur!\n";
+	
+	Logique gameplay;
+	gameplay.InitialisationJeu();
+	gameplay.LancerJeu();
+
 }

@@ -42,10 +42,10 @@
     <ClInclude Include="Case.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Plateau.hpp">
+    <ClInclude Include="Logique.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logique.hpp">
+    <ClInclude Include="Plateau.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
